@@ -16,10 +16,10 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('nama');
-            $table->string('posisi');
-            $table->string('grup');
-            $table->enum('user_type', ['admin', 'user']);
+            $table->string('name');
+            $table->string('position');
+            $table->string('group');
+            $table->string('role');
             $table->rememberToken(); 
             $table->timestamps();
         });
