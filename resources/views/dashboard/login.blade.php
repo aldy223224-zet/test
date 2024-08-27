@@ -15,7 +15,7 @@
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
   </head>
-  <body class="bg-gradient-primary">
+  <body style="background-color: yellow;">
     <div class="container">
       <!-- Outer Row -->
       <div class="row justify-content-center" style="height: 100vh">
@@ -25,14 +25,14 @@
               <!-- Nested Row within Card Body -->
               <div class="row">
                 <div class="col-lg-12">
-                  <div class="p-5">
+                  <div class="p-4">
                     <div class="text-center">
-                      <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                      <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
                     </div>
                     <form class="user" method="post">
                       @csrf
                       <div class="form-group">
-                        <input type="text" name="username" class="form-control form-control-user" placeholder="Enter Username...">
+                        <input type="text" name="username" class="form-control form-control-user" placeholder="Masukan Username...">
                       </div>
                       <div class="form-group">
                         <input type="password" name="password" class="form-control form-control-user"  placeholder="Password">
@@ -40,8 +40,7 @@
                       <div class="form-group">
                         <div class="custom-control custom-checkbox small">
                           <input type="checkbox" class="custom-control-input" id="customCheck">
-                          <label class="custom-control-label" for="customCheck">Remember
-                          Me</label>
+                          <label class="custom-control-label" for="customCheck">Ingat Saya!</label>
                         </div>
                       </div>
                       <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">Login</button>
@@ -70,3 +69,21 @@
     <script src="/js/sb-admin-2.min.js"></script>
   </body>
 </html>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.user');
+    form.addEventListener('submit', function(event) {
+      const username = form.querySelector('input[name="username"]').value;
+      const password = form.querySelector('input[name="password"]').value;
+
+      if (!username || !password) {
+        event.preventDefault(); // Prevent form submission
+        alert('Username dan password harus diisi.');
+        return false;
+      }
+    });
+  });
+</script>
+
+<form class="user" method="post" id="loginForm">
