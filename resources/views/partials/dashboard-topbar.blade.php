@@ -13,10 +13,45 @@
     </div>
 </a>
 
+
+
   <!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">
 
+    <!-- Nav Item - Time, Date, and Day Information -->
+    <li class="nav-item no-arrow">
+        <span class="mr-3 d-none d-lg-inline text-gray-600 small" style="margin-top: 30px; display: inline-block;">
+            <span id="currentTime"></span> | <span id="currentDate"></span>
+        </span>
+    </li>
+
       <div class="topbar-divider d-none d-sm-block"></div>
+
+      <script>
+        function updateTime() {
+            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const now = new Date();
+            const day = days[now.getDay()];
+            const date = now.getDate().toString().padStart(2, '0');
+            const month = (now.getMonth() + 1).toString().padStart(2, '0'); // bulan dimulai dari 0
+            const year = now.getFullYear();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('currentTime').innerHTML = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('currentDate').innerHTML = `${day}, ${date}-${month}-${year}`;
+        }
+    
+        // Panggil updateTime setiap detik
+        setInterval(updateTime, 1000);
+    
+        // Panggilan awal
+        updateTime();
+    </script>
+
+
+
 
       <!-- Nav Item - User Information -->
       <li class="nav-item dropdown no-arrow">
@@ -40,6 +75,7 @@
                   Keluar
               </a>
           </div>
+          
       </li>
 
   </ul>

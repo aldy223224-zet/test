@@ -7,8 +7,6 @@
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Halo, {{$profil->name}}!</h1>
-      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-              class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
   </div>
 
   <!-- Content Row -->
@@ -54,14 +52,11 @@
           <!-- Approach -->
           <div class="card shadow mb-4">
               <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Petunjuk Penggunaan</h6>
               </div>
               <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                      CSS bloat and poor page performance. Custom CSS classes are used to create
-                      custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the
-                      Bootstrap framework, especially the utility classes.</p>
+                  <p>Sebelum meninggalkan aplikasi, pastikan bahwa semua data yang Anda submit telah diverifikasi. Jika data Anda belum terverifikasi, harap menunggu proses verifikasi atau hubungi Kashif atau Supervisor (SPV) yang bertugas untuk bantuan lebih lanjut.</p>
+                  <p class="mb-0">Before leaving the application, please ensure that all the data you submitted has been verified. If your data has not been verified, please wait for the verification process or contact Kashif or the Supervisor (SPV) on duty for further assistance.</p>
               </div>
           </div>
 
