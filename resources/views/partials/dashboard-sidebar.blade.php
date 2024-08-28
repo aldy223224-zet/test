@@ -4,7 +4,7 @@
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="dashboard">
           <i class="fas fa-fw fa-tachometer-alt"style="color: black;"></i>
           <span style="color: black;">Dashboard</span></a>
   </li>

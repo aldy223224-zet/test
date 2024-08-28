@@ -7,7 +7,7 @@
   </button>
 
 
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center">
     <div class="sidebar-brand-icon">
         <img id="logo" src="img/img1.png" width="150">
     </div>
