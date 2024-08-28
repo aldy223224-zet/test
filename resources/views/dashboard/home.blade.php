@@ -12,7 +12,7 @@
   <!-- Content Row -->
   <div class="row">
 
-      <!-- Earnings (Monthly) Card Example -->
+      <!-- Input data -->
       <div class="row">
         <div class="col-lg-12">
           <div class="p-4">
@@ -27,23 +27,48 @@
               <button type="submit" name="submit" class="btn btn-primary btn-user btn-block" style="width: 150px; padding: 10px; margin: 0 auto; display: block;">Submit</button>
 
 
-      <!-- Earnings (Monthly) Card Example -->
+      <!-- card verification status -->
       <div class="col-xl-3 col-md-6 mb-4">
-          <div class="card border-left-success shadow h-100 py-2">
-              <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                              Status Verifikasi</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">Belum Diferifikasi</div>
-                      </div>
-                      <div class="col-auto">
+        <div class="card border-left-danger shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-gray text-uppercase mb-1">
+                            Status Verifikasi
+                        </div>
+                        <div id="statusText" class="h5 mb-0 font-weight-bold text-danger">Belum Diverifikasi</div>
+                    </div>
+                    <div class="col-auto">
                         <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Misalnya, Anda memiliki variabel yang menunjukkan apakah sudah diverifikasi
+        let isVerified = false; // Ganti dengan logika sebenarnya untuk menentukan status verifikasi
+    
+        // Fungsi untuk memperbarui status tampilan
+        function updateVerificationStatus() {
+            const statusTextElement = document.getElementById('statusText');
+    
+            if (isVerified) {
+                statusTextElement.textContent = 'Sudah Diverifikasi';
+                statusTextElement.classList.remove('text-danger');
+                statusTextElement.classList.add('text-success');
+            } else {
+                statusTextElement.textContent = 'Belum Diverifikasi';
+                statusTextElement.classList.remove('text-success');
+                statusTextElement.classList.add('text-danger');
+            }
+        }
+    
+        // Panggil fungsi untuk memperbarui status tampilan saat halaman dimuat
+        updateVerificationStatus();
+    </script>
+    
 
 
 
