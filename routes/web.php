@@ -16,9 +16,9 @@ Route::get('/', function () {
 //Auth::routes();
 
 // DASHBOARD AUTH
-Route::get('/dashboard/login', [UserAuthController::class, 'index'])->name('login');
-Route::post('/dashboard/login', [UserAuthController::class, 'login']);
-Route::get('/dashboard/logout', [UserAuthController::class, 'logout']);
+Route::get('/login', [UserAuthController::class, 'index'])->name('login');
+Route::post('/login', [UserAuthController::class, 'login']);
+Route::get('/logout', [UserAuthController::class, 'logout']);
 
 // DASHBOARD PAGE
 Route::group(['prefix'=> 'dashboard','middleware'=>['auth:user']], function(){
