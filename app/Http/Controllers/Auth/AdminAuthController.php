@@ -1,34 +1,35 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-use App\Models\Meta;
-use App\Models\Student;
+// use App\Models\Meta;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class StudentAuthController extends Controller
+class AdminAuthController extends Controller
 {
-    private function meta(){
-        $meta = Meta::$data_meta;
-        $meta['title'] = 'Login';
-        return $meta;
-    }
+    // private function meta(){
+    //     $meta = Meta::$data_meta;
+    //     $meta['title'] = 'Login';
+    //     return $meta;
+    // }
 
     public function index(){
-        return view('dashboard.login',[
-            "meta" => $this->meta(),
+        return view('admin.login',[
+            //"meta" => $this->meta(),
+            "title" => "Admin Login"
         ]);
     }
 
     public function login(Request $request){
         $credentials = $request->validate([
-            'nim' => 'required|numeric',
+            'username' => 'required',
             'password' => 'required',
         ]);
         
-        if(Auth::guard('student')->attempt($credentials)){
+        if(Auth::guard('admin')->attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended('admin');
         }
 
         //$student = Student::where('nim', '=', $request->nim)->first();
@@ -42,9 +43,9 @@ class StudentAuthController extends Controller
     }
 
     public function logout(){
-        if(Auth::guard('student')->check()){
-            Auth::guard('student')->logout();
+        if(Auth::guard('admin')->check()){
+            Auth::guard('admin')->logout();
         }
-        return redirect('/dashboard/login');
+        return redirect('/admin/login');
     }
 }

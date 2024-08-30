@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,15 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Test User',
             'username' => 'test',
+            'password' => bcrypt("password"),
+            'position' => 'grinding',
+            'group' => 'A',
+            'role' => 'user',
+        ]);
+
+        Admin::create([
+            'name' => 'Test Admin',
+            'username' => 'admin',
             'password' => bcrypt("password"),
             'position' => 'grinding',
             'group' => 'A',

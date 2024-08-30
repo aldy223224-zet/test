@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\AdminHome;
+use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Dashboard\DashboardHome;
 
@@ -27,6 +29,21 @@ Route::group(['prefix'=> 'dashboard','middleware'=>['auth:user']], function(){
     
     //Route::post('/probinmaba', [DashProbinmaba::class, 'postHandler']);
 });
+
+
+// ADMIN AUTH
+Route::get('/admin/login', [AdminAuthController::class, 'index']);
+Route::post('/admin/login', [AdminAuthController::class, 'login']);
+Route::get('/admin/logout', [AdminAuthController::class, 'logout']);
+
+// DASHBOARD PAGE
+Route::group(['prefix'=> 'admin','middleware'=>['auth:admin']], function(){
+    Route::get('/', [AdminHome::class, 'index']);
+    Route::get('/home', [AdminHome::class, 'index']);
+    
+    //Route::post('/probinmaba', [DashProbinmaba::class, 'postHandler']);
+});
+
 
 // Middleware for authenticated users
 Route::middleware(['auth'])->group(function () {
