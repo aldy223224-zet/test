@@ -11,6 +11,21 @@
       <h1 class="h3 mb-0 text-gray-800">Halo, {{$profil->name}}, {{$profil->position}}!</h1>
   </div>
 
+    <!-- Dropdown Menu for Shift Selection -->
+    <div class="ml-auto">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="shiftSelect" class="sr-only">Pilih Shift:</label>
+            <select id="shiftSelect" name="shift" class="form-control form-control-sm">
+              <option value="1">Shift 1</option>
+              <option value="2">Shift 2</option>
+              <option value="3">Shift 3</option>
+            </select>
+          </div>
+        </form>
+      </div>
+  </div>
+
   <!-- Content Row -->
   <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
     class="fas fa-download fa-sm text-white-50"></i> Unduh Laporan</a>
