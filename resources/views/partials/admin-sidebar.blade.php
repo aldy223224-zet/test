@@ -1,13 +1,19 @@
 <!-- Sidebar -->
-<ul class="navbar-nav sidebar sidebar-dark bg-primary accordion" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color:yellow">
 
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
     <a class="nav-link" href="/admin">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span>
-    </a>
+        <i class="fas fa-fw fa-tachometer-alt"style="color: black;"></i>
+        <span style="color: black;">Dashboard</span></a>
+  </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" href="tables.html">
+          <i class="fas fa-fw fa-table"style="color: black;"></i>
+          <span style="color: black;">Tabel</span></a>
   </li>
 
   <!-- Sidebar Toggler (Sidebar) -->

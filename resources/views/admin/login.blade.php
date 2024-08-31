@@ -15,7 +15,7 @@
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
   </head>
-  <body class="bg-dark">
+  <body style="background-color: yellow;">
     <div class="container">
       <!-- Outer Row -->
       <div class="row justify-content-center" style="height: 100vh">
