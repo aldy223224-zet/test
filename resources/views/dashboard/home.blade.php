@@ -9,6 +9,21 @@
       <h1 class="h3 mb-0 text-gray-800">Halo, {{$profil->name}}!</h1>
   </div>
 
+    <!-- Dropdown Menu for Shift Selection -->
+    <div class="ml-auto">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="shiftSelect" class="sr-only">Pilih Shift:</label>
+          <select id="shiftSelect" name="shift" class="form-control form-control-sm">
+            <option value="1">Shift 1</option>
+            <option value="2">Shift 2</option>
+            <option value="3">Shift 3</option>
+          </select>
+        </div>
+      </form>
+    </div>
+</div>
+
   <!-- Content Row -->
   <div class="row">
 
