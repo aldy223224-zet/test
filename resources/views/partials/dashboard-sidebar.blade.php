@@ -8,6 +8,12 @@
           <i class="fas fa-fw fa-tachometer-alt"style="color: black;"></i>
           <span style="color: black;">Dashboard</span></a>
   </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="/dashboard/hasil-produksi">
+      <i class="fas fa-fw fa-tachometer-alt" style="color: black;"></i>
+      <span style="color: black;">Hasil Produksi</span>
+    </a>
+  </li>
 
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">

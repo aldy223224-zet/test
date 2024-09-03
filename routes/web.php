@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminHome;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Dashboard\DashboardHome;
+use App\Http\Controllers\Dashboard\DashboardProduction;
 
 // Home route
 Route::get('/', function () {
@@ -26,8 +27,9 @@ Route::get('/logout', [UserAuthController::class, 'logout']);
 Route::group(['prefix'=> 'dashboard','middleware'=>['auth:user']], function(){
     Route::get('/', [DashboardHome::class, 'index']);
     Route::get('/home', [DashboardHome::class, 'index']);
+    Route::get('/hasil-produksi', [DashboardProduction::class, 'index']);
     
-    //Route::post('/probinmaba', [DashProbinmaba::class, 'postHandler']);
+    Route::post('/hasil-produksi', [DashboardProduction::class, 'postHandler']);
 });
 
 

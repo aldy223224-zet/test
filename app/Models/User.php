@@ -18,4 +18,8 @@ class User extends Authenticatable
     {
         return $this->password;
     }
+
+    public function production(){
+        return $this->hasMany(Production::class);
+    }
 }
