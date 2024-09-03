@@ -56,7 +56,7 @@
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                <button class="rounded-circle border-0" id="sidebarToggle"style="background-color: black; opacity: 0.5;"></button>
             </div>
 
         </ul>
@@ -125,7 +125,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Agus</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Fuad</span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -171,9 +171,10 @@
                                     <thead>
                                         <tr>
                                             <th>Nama</th>
-                                            <th>Position</th>
+                                            <th>Posisi</th>
                                             <th>Group</th>
                                             <th>Shift</th>
+                                            <th>Tanggal</th>
                                             <th>Hasil</th>
 
                                         </tr>
@@ -181,9 +182,10 @@
                                     <tfoot>
                                         <tr>
                                             <th>Nama</th>
-                                            <th>Position</th>
+                                            <th>Posisi</th>
                                             <th>Group</th>
                                             <th>Shift</th>
+                                            <th>Tanggal</th>
                                             <th>Hasil</th>
 
                                         </tr>
@@ -194,6 +196,7 @@
                                             <td>Grinding</td>
                                             <td>A</td>
                                             <td>1</td>
+                                            <td>03-09-2024</td>
                                             <td>0</td>
                                         </tr>
                                         <tr>
@@ -201,6 +204,7 @@
                                             <td>Ballmill</td>
                                             <td>A</td>
                                             <td>1</td>
+                                            <td>03-09-2024</td>
                                             <td>43</td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <a href="#" class="btn btn-success btn-circle">
@@ -213,6 +217,7 @@
                                             <td>Mixing</td>
                                             <td>A</td>
                                             <td>1</td>
+                                            <td>03-09-2024</td>
                                             <td>91</td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <a href="#" class="btn btn-success btn-circle">
@@ -225,6 +230,7 @@
                                             <td>Curring Room</td>
                                             <td>A</td>
                                             <td>1</td>
+                                            <td>03-09-2024</td>
                                             <td>91</td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <a href="#" class="btn btn-success btn-circle">
@@ -237,6 +243,7 @@
                                             <td>Crane 1</td>
                                             <td>A</td>
                                             <td>1</td>
+                                            <td>03-09-2024</td>
                                             <td>96</td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <a href="#" class="btn btn-success btn-circle">
@@ -248,6 +255,7 @@
                                             <td>Cutting</td>
                                             <td>A</td>
                                             <td>1</td>
+                                            <td>03-09-2024</td>
                                             <td>96</td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <a href="#" class="btn btn-success btn-circle">
@@ -260,6 +268,7 @@
                                             <td>Crane 2</td>
                                             <td>A</td>
                                             <td>1</td>
+                                            <td>03-09-2024</td>
                                             <td>96</td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <a href="#" class="btn btn-success btn-circle">
@@ -272,6 +281,7 @@
                                             <td>Crane 3</td>
                                             <td>A</td>
                                             <td>1</td>
+                                            <td>03-09-2024</td>
                                             <td>91</td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <a href="#" class="btn btn-success btn-circle">
@@ -284,6 +294,7 @@
                                             <td>Autoclave</td>
                                             <td>A</td>
                                             <td>1</td>
+                                            <td>03-09-2024</td>
                                             <td>5</td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <a href="#" class="btn btn-success btn-circle">
@@ -296,6 +307,7 @@
                                             <td>Boiler</td>
                                             <td>A</td>
                                             <td>1</td>
+                                            <td>03-09-2024</td>
                                             <td>5</td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <a href="#" class="btn btn-success btn-circle">
@@ -308,6 +320,7 @@
                                             <td>Sortir</td>
                                             <td>A</td>
                                             <td>1</td>
+                                            <td>03-09-2024</td>
                                             <td>91</td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <a href="#" class="btn btn-success btn-circle">
@@ -383,13 +396,36 @@
                             <form class="user" method="post">
                               <div class="form-group">
                                 <input type="text" name="username" class="form-control form-control-user" placeholder="Catatan.....">
-                            </div>
-                            <button type="submit" name="submit" class="btn btn-primary btn-user btn-block" style="width: 150px; padding: 10px; margin: 0 auto; display: block;">Submit</button>
-            
 
+
+
+            <!-- Dropdown Button for Calendar -->
+            <div class="form-group">
+                <label for="calendarDropdown">Pilih Tanggal Produksi:</label>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="calendarDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Pilih Tanggal
+                  </button>
+                  <div class="dropdown-menu p-3" aria-labelledby="calendarDropdownButton">
+                    <div id="calendar"></div>
+                  </div>
+                </div>
+                <input type="hidden" id="selectedDate" name="tanggal_produksi">
+                <small id="selectedDateText" class="form-text text-muted">Tanggal yang dipilih: <span class="font-weight-bold">Belum Dipilih</span></small>
+              </div>
+  
+              <button type="submit" name="submit" class="btn btn-primary btn-user btn-block" style="width: 150px; padding: 10px; margin: 0 auto; display: block;">Submit</button>
+            </form>
+
+
+
+
+            
             </div>
             <!-- End of Main Content -->
 
+
+            
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
