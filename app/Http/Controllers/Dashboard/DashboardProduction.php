@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
+
 use App\Http\Controllers\Controller;
 use App\Models\Production;
 use Illuminate\Http\Request;
@@ -9,11 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class DashboardProduction extends Controller
 {
     public function index(){
-        $user_id = auth()->user()->id;
+        $user_id = Auth::id(); // Use Auth::id() to get the authenticated user's ID
         return view('dashboard.production', [
             "title" => "Hasil Produksi",
             "productions" => Production::where('user_id', $user_id)->get(),
-            "profil" => auth()->user(),
+            "profil" => Auth::user(), // Use Auth::user() to get the authenticated user's details
         ]);
     }
 
@@ -50,7 +51,7 @@ class DashboardProduction extends Controller
             'shift' => 'required|numeric',
         ]);
 
-        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['user_id'] = Auth::id(); // Use Auth::id() to get the authenticated user's ID
         $validatedData['status'] = 0;
         $validatedData['note'] = "";
 
@@ -59,18 +60,19 @@ class DashboardProduction extends Controller
         return ['status'=>'success','message'=>'Hasil produksi berhasil ditambahkan'];
     }
 
-    //update
+    // Update method
     public function update(Request $request, $id) {
         $production = Production::find($id);
-        $production->production_date = $request->production_date;
-        $production->shift = $request->shift;
-        $production->production_result = $request->production_result;
-    
-        $production->save();
-    
-        return ['status'=>'success','message'=>'Hasil produksi berhasil diupdate'];
+        if ($production) {
+            $production->production_date = $request->production_date;
+            $production->shift = $request->shift;
+            $production->production_result = $request->production_result;
+        
+            $production->save();
+        
+            return ['status'=>'success','message'=>'Hasil produksi berhasil diupdate'];
+        } else {
+            return ['status'=>'error','message'=>'Data tidak ditemukan'];
+        }
     }
-    
-
-    
 }
