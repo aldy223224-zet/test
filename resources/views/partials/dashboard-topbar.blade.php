@@ -9,7 +9,7 @@
 
   <a class="sidebar-brand d-flex align-items-center justify-content-center">
     <div class="sidebar-brand-icon">
-        <img id="logo" src="img/img1.png" width="150">
+        <img id="logo" src="img/" width="150">
     </div>
 </a>
 

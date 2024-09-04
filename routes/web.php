@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\AdminHome;
+use App\Http\Controllers\Admin\DashboardAdmin;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Dashboard\DashboardHome;
@@ -46,6 +47,14 @@ Route::group(['prefix'=> 'admin','middleware'=>['auth:admin']], function(){
     Route::get('/home', [AdminHome::class, 'index']);
     
     //Route::post('/probinmaba', [DashProbinmaba::class, 'postHandler']);
+});
+
+// Admin Dashboard Routes
+Route::group(['prefix'=> 'admin','middleware'=>['auth:admin']], function(){
+    Route::get('/', [AdminHome::class, 'index']);
+    Route::get('/home', [AdminHome::class, 'index']);
+    Route::get('/hasil-admin', [DashboardAdmin::class, 'index'])->name('admin.production.index');
+    Route::put('/admin/production/verify/{id}', [DashboardAdmin::class, 'verify'])->name('production.verify');
 });
 
 

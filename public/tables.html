@@ -2,136 +2,105 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Admin Bricon - Tables</title>
-
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color:yellow">
-
-              <!-- Nav Item - Dashboard -->
-              <li class="nav-item active">
-                 <a class="nav-link" href="/admin">
-                    <i class="fas fa-fw fa-tachometer-alt"style="color: black;"></i>
-                    <span style="color: black;">Dashboard</span></a>
-                </li>
-
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin">
+                    <i class="fas fa-fw fa-tachometer-alt" style="color: black;"></i>
+                    <span style="color: black;">Dashboard</span>
+                </a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
-
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
                 <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"style="color: black;"></i>
-                    <span style="color: black;">Tabel</span></a>
+                    <i class="fas fa-fw fa-table" style="color: black;"></i>
+                    <span style="color: black;">Tabel</span>
+                </a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"style="background-color: black; opacity: 0.5;"></button>
+                <button class="rounded-circle border-0" id="sidebarToggle" style="background-color: black; opacity: 0.5;"></button>
             </div>
-
         </ul>
         <!-- End of Sidebar -->
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                     <!-- Sidebar Toggle (Topbar) -->
                     <form class="form-inline">
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3" style="background-color: rgba(0, 0, 0, 0.5); border: none;">
                             <i class="fa fa-bars" style="color: black;"></i>
                         </button>
                     </form>
-
                     <!-- Topbar Logo -->
                     <a class="sidebar-brand d-flex align-items-center justify-content-center">
                         <div class="sidebar-brand-icon">
                             <img id="logo" src="img/img1.png" width="150">
                         </div>
                     </a>
-
-  <!-- Topbar Navbar -->
-  <ul class="navbar-nav ml-auto">
-
-    <!-- Nav Item - Time, Date, and Day Information -->
-    <li class="nav-item no-arrow row">
-        <span class="my-auto mr-3 d-none d-lg-inline text-gray-600 small" style="margin-top: 30px; display: inline-block;">
-            <span id="currentTime"></span> | <span id="currentDate"></span>
-        </span>
-    </li>
-
-      <div class="topbar-divider d-none d-sm-block"></div>
-
-      <script>
-        function updateTime() {
-            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-            const now = new Date();
-            const day = days[now.getDay()];
-            const date = now.getDate().toString().padStart(2, '0');
-            const month = (now.getMonth() + 1).toString().padStart(2, '0'); // bulan dimulai dari 0
-            const year = now.getFullYear();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const seconds = now.getSeconds().toString().padStart(2, '0');
-            
-            document.getElementById('currentTime').innerHTML = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('currentDate').innerHTML = `${day}, ${date}-${month}-${year}`;
-        }
-    
-        // Panggil updateTime setiap detik
-        setInterval(updateTime, 1000);
-    
-        // Panggilan awal
-        updateTime();
-    </script>
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Nav Item - Time, Date, and Day Information -->
+                        <li class="nav-item no-arrow row">
+                            <span class="my-auto mr-3 d-none d-lg-inline text-gray-600 small" style="margin-top: 30px; display: inline-block;">
+                                <span id="currentTime"></span> | <span id="currentDate"></span>
+                            </span>
                         </li>
-
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <script>
+                            function updateTime() {
+                                const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                                const now = new Date();
+                                const day = days[now.getDay()];
+                                const date = now.getDate().toString().padStart(2, '0');
+                                const month = (now.getMonth() + 1).toString().padStart(2, '0'); // bulan dimulai dari 0
+                                const year = now.getFullYear();
+                                const hours = now.getHours().toString().padStart(2, '0');
+                                const minutes = now.getMinutes().toString().padStart(2, '0');
+                                const seconds = now.getSeconds().toString().padStart(2, '0');
+                                
+                                document.getElementById('currentTime').innerHTML = `${hours}:${minutes}:${seconds}`;
+                                document.getElementById('currentDate').innerHTML = `${day}, ${date}-${month}-${year}`;
+                            }
+                            // Panggil updateTime setiap detik
+                            setInterval(updateTime, 1000);
+                            // Panggilan awal
+                            updateTime();
+                        </script>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Fuad</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -143,23 +112,15 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Tabel Produksi</h1>
-                    <p class="mb-4"> 
-                        Pastikan semua data yang telah diinput oleh operator telah diverifikasi dengan teliti sebelum mengakhiri shift. Verifikasi ini penting untuk memastikan bahwa semua informasi yang dimasukkan akurat dan lengkap, sehingga mendukung kelancaran operasi dan menghindari potensi kesalahan. <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
-                    <p class="mb-6"> 
-                        Ensure that all data that has been inputted by the operator has been carefully verified before ending the shift. This verification is important to ensure that all information entered is accurate and complete, thus supporting smooth operations and avoiding potential errors. <a target="_blank"
-                        href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <p class="mb-4">Pastikan semua data yang telah diinput oleh operator telah diverifikasi dengan teliti sebelum mengakhiri shift. Verifikasi ini penting untuk memastikan bahwa semua informasi yang dimasukkan akurat dan lengkap, sehingga mendukung kelancaran operasi dan menghindari potensi kesalahan. <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <p class="mb-6">Ensure that all data that has been inputted by the operator has been carefully verified before ending the shift. This verification is important to ensure that all information entered is accurate and complete, thus supporting smooth operations and avoiding potential errors. <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -176,7 +137,8 @@
                                             <th>Shift</th>
                                             <th>Tanggal</th>
                                             <th>Hasil</th>
-
+                                            <th>Status</th>
+                                            <th>Aksi</th> <!-- Added action column -->
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -187,303 +149,179 @@
                                             <th>Shift</th>
                                             <th>Tanggal</th>
                                             <th>Hasil</th>
-
+                                            <th>Status</th>
+                                            <th>Aksi</th> <!-- Added action column -->
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                        @foreach ($productions as $p)
+                                        @php
+                                            $pdate = date_create($p->production_date);
+                                        @endphp
                                         <tr>
-                                            <td>Charde Marshall</td>
-                                            <td>Grinding</td>
-                                            <td>A</td>
-                                            <td>1</td>
-                                            <td>03-09-2024</td>
-                                            <td>0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Haley Kennedy</td>
-                                            <td>Ballmill</td>
-                                            <td>A</td>
-                                            <td>1</td>
-                                            <td>03-09-2024</td>
-                                            <td>43</td>
+                                            <td>{{ $profil->name }}</td>
+                                            <td>{{ $profil->position }}</td>
+                                            <td>{{ $profil->group }}</td>
+                                            <td>{{ $p->shift }}</td>
+                                            <td>{{ date_format($pdate,"Y/m/d") }}</td>
+                                            <td>{{ $p->production_result }}</td>
                                             <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td>Tatyana Fitzpatrick</td>
-                                            <td>Mixing</td>
-                                            <td>A</td>
-                                            <td>1</td>
-                                            <td>03-09-2024</td>
-                                            <td>91</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
+                                                @if ($p->status == 1)
+                                                    <span class="badge badge-success">Terverifikasi</span>
+                                                @elseif ($p->status == 0)
+                                                    <span class="badge badge-warning">Menunggu verifikasi</span>
+                                                @else
+                                                    <span class="badge badge-danger">Ditolak</span>
+                                                @endif
                                             </td>
-                                            </tr> 
-                                        <tr>
-                                            <td>Michael Silva</td>
-                                            <td>Curring Room</td>
-                                            <td>A</td>
-                                            <td>1</td>
-                                            <td>03-09-2024</td>
-                                            <td>91</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
+                                            <td>
+                                                @if ($p->status == 0)
+                                                    <!-- Verification Button -->
+                                                    <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#verifyModal{{ $p->id }}">Verifikasi</button>
+                                                    <!-- Rejection Button -->
+                                                    <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#rejectModal{{ $p->id }}">Tolak</button>
+                                                @else
+                                                    <button class="btn btn-sm btn-secondary" disabled>Action</button>
+                                                @endif
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>Paul Byrd</td>
-                                            <td>Crane 1</td>
-                                            <td>A</td>
-                                            <td>1</td>
-                                            <td>03-09-2024</td>
-                                            <td>96</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a> 
-                                        </tr>
-                                        <tr>
-                                            <td>Gloria Little</td>
-                                            <td>Cutting</td>
-                                            <td>A</td>
-                                            <td>1</td>
-                                            <td>03-09-2024</td>
-                                            <td>96</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td>Bradley Greer</td>
-                                            <td>Crane 2</td>
-                                            <td>A</td>
-                                            <td>1</td>
-                                            <td>03-09-2024</td>
-                                            <td>96</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td>Dai Rios</td>
-                                            <td>Crane 3</td>
-                                            <td>A</td>
-                                            <td>1</td>
-                                            <td>03-09-2024</td>
-                                            <td>91</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td>Jenette Caldwell</td>
-                                            <td>Autoclave</td>
-                                            <td>A</td>
-                                            <td>1</td>
-                                            <td>03-09-2024</td>
-                                            <td>5</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td>Yuri Berry</td>
-                                            <td>Boiler</td>
-                                            <td>A</td>
-                                            <td>1</td>
-                                            <td>03-09-2024</td>
-                                            <td>5</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td>Caesar Vance</td>
-                                            <td>Sortir</td>
-                                            <td>A</td>
-                                            <td>1</td>
-                                            <td>03-09-2024</td>
-                                            <td>91</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td>Doris Wilder</td>
-                                            <td>Sales Assistant</td>
-                                            <td>Sidney</td>
-                                            <td>23</td>
-                                            <td>2010/09/20</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td>Angelica Ramos</td>
-                                            <td>Chief Executive Officer (CEO)</td>
-                                            <td>London</td>
-                                            <td>47</td>
-                                            <td>2009/10/09</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td>Gavin Joyce</td>
-                                            <td>Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>42</td>
-                                            <td>2010/12/22</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td>Jennifer Chang</td>
-                                            <td>Regional Director</td>
-                                            <td>Singapore</td>
-                                            <td>28</td>
-                                            <td>2010/11/14</td>
-                                            <td style="text-align: center; vertical-align: middle;">
-                                                <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                            </td> 
-                                        </tr>
-                                        </tr>
+
+                                        <!-- Verify Modal -->
+                                        <div class="modal fade" id="verifyModal{{ $p->id }}" tabindex="-1" role="dialog" aria-labelledby="verifyModalLabel{{ $p->id }}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="verifyModalLabel{{ $p->id }}">Verifikasi Produksi</h5>
+                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="{{ route('verify.production', $p->id) }}" method="POST">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            Apakah Anda yakin ingin memverifikasi data produksi ini?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                                            <button class="btn btn-primary" type="submit">Verifikasi</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Reject Modal -->
+                                        <div class="modal fade" id="rejectModal{{ $p->id }}" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel{{ $p->id }}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="rejectModalLabel{{ $p->id }}">Tolak Produksi</h5>
+                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="{{ route('reject.production', $p->id) }}" method="POST">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            Apakah Anda yakin ingin menolak data produksi ini?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                                            <button class="btn btn-primary" type="submit">Tolak</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-
+                    <!-- End of DataTales Example -->
                 </div>
-                <!-- /.container-fluid -->
-
-                    <!-- Input Note -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                          <div class="p-4">
+                <!-- End of Main Content -->
+                <!-- Input Note -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="p-4">
                             <div class="text-center">
-                              <h1 class="h4 text-gray-900 mb-4">Berikan Catatan Hari Ini!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Berikan Catatan Hari Ini!</h1>
                             </div>
                             <form class="user" method="post">
-                              <div class="form-group">
-                                <input type="text" name="username" class="form-control form-control-user" placeholder="Catatan.....">
-
-
-
-            <!-- Dropdown Button for Calendar -->
-            <div class="form-group">
-                <label for="calendarDropdown">Pilih Tanggal Produksi:</label>
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="calendarDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Pilih Tanggal
-                  </button>
-                  <div class="dropdown-menu p-3" aria-labelledby="calendarDropdownButton">
-                    <div id="calendar"></div>
-                  </div>
-                </div>
-                <input type="hidden" id="selectedDate" name="tanggal_produksi">
-                <small id="selectedDateText" class="form-text text-muted">Tanggal yang dipilih: <span class="font-weight-bold">Belum Dipilih</span></small>
-              </div>
-  
-              <button type="submit" name="submit" class="btn btn-primary btn-user btn-block" style="width: 150px; padding: 10px; margin: 0 auto; display: block;">Submit</button>
-            </form>
-
-
-
-
-            
-            </div>
-            <!-- End of Main Content -->
-
-
-            
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Aldy Putra Wijaya 2024</span>
+                                <div class="form-group">
+                                    <input type="text" name="note" class="form-control form-control-user" placeholder="Catatan.....">
+                                </div>
+                                <!-- Dropdown Button for Calendar -->
+                                <div class="form-group">
+                                    <label for="calendarDropdown">Pilih Tanggal Produksi:</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="calendarDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Pilih Tanggal
+                                        </button>
+                                        <div class="dropdown-menu p-3" aria-labelledby="calendarDropdownButton">
+                                            <div id="calendar"></div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="selectedDate" name="tanggal_produksi">
+                                    <small id="selectedDateText" class="form-text text-muted">Tanggal yang dipilih: <span class="font-weight-bold">Belum Dipilih</span></small>
+                                </div>
+                                <button type="submit" name="submit" class="btn btn-primary btn-user btn-block" style="width: 150px; padding: 10px; margin: 0 auto; display: block;">Submit</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
-
+                <!-- End of Input Note -->
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Aldy Putra Wijaya 2024</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+            </div>
+            <!-- End of Content Wrapper -->
         </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+        <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="js/demo/datatables-demo.js"></script>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-
 </body>
 
 </html>

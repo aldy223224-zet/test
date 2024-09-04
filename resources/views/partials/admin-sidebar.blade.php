@@ -11,7 +11,7 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-      <a class="nav-link" href="tables.html">
+      <a class="nav-link" href="/admin/hasil-admin">
           <i class="fas fa-fw fa-table"style="color: black;"></i>
           <span style="color: black;">Tabel</span></a>
   </li>
