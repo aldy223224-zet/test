@@ -10,10 +10,10 @@ class DashboardProduction extends Controller
 {
     public function index(){
         $user_id = auth()->user()->id;
-        return view('dashboard.production',[
+        return view('dashboard.production', [
             "title" => "Hasil Produksi",
-            "productions" => Production::where('user_id',$user_id)->get(),
-            "profil" => Auth::guard('user')->user(),
+            "productions" => Production::where('user_id', $user_id)->get(),
+            "profil" => auth()->user(),
         ]);
     }
 
@@ -22,14 +22,24 @@ class DashboardProduction extends Controller
             $res = $this->store($request);
             return redirect()->back()->with($res['status'], $res['message']);
         } elseif ($request->submit == "update") {
-            $res = $this->update($request);
+            $res = $this->update($request, $request->id);
             return redirect()->back()->with($res['status'], $res['message']);
         } elseif ($request->submit == "destroy") {
             $res = $this->destroy($request);
             return redirect()->back()->with($res['status'], $res['message']);
-            // return redirect()->back()->with("info","Fitur hapus sementara dinonaktifkan");
         } else {
             return redirect()->back()->with("info", "Submit not found");
+        }
+    }
+
+    public function destroy(Request $request) {
+        $production = Production::find($request->id);
+    
+        if ($production) {
+            $production->delete();
+            return ['status'=>'success','message'=>'Hasil produksi berhasil dihapus'];
+        } else {
+            return ['status'=>'error','message'=>'Data tidak ditemukan'];
         }
     }
 
@@ -48,5 +58,19 @@ class DashboardProduction extends Controller
         Production::create($validatedData);
         return ['status'=>'success','message'=>'Hasil produksi berhasil ditambahkan'];
     }
+
+    //update
+    public function update(Request $request, $id) {
+        $production = Production::find($id);
+        $production->production_date = $request->production_date;
+        $production->shift = $request->shift;
+        $production->production_result = $request->production_result;
+    
+        $production->save();
+    
+        return ['status'=>'success','message'=>'Hasil produksi berhasil diupdate'];
+    }
+    
+
     
 }
