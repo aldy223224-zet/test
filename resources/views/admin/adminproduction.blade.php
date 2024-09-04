@@ -49,7 +49,7 @@
             <td>{{ $production->user->name }}</td>
             <td>{{ $production->user->position }}</td>
             <td>{{ $production->user->group }}</td>
-            <td>{{ $production->production_date }}</td>
+            <td>{{ \Carbon\Carbon::parse($production->production_date)->format('d/m/Y') }}</td>
             <td>{{ $production->production_result }}</td>
             <td>{{ $production->shift }}</td>
             <td>
@@ -65,6 +65,7 @@
                 <!-- Verify form -->
                 <form action="{{ route('production.verify', $production->id) }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" name="submit" value="verify">
                     <select name="status" required>
                         <option value="1">Verified</option>
@@ -72,7 +73,7 @@
                         <option value="2">Denied</option>
                     </select>
                     <input type="text" name="note" placeholder="Add a note (optional)">
-                    <button type="submit">Submit</button>
+                    <button type="submit">Verify</button>
                 </form>
             </td>
         </tr>
