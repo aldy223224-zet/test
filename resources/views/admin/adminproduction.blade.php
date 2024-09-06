@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.admin')
 
 @section('content')
 <!-- Begin Page Content -->
@@ -14,8 +14,9 @@
                             <div class="form-group">
                                 <label for="production_date{{ $production->id }}">Tanggal Produksi</label>
                                 <input type="datetime-local" class="form-control" id="production_date{{ $production->id }}" name="production_date" value="{{ \Carbon\Carbon::parse($production->production_date)->format('Y-m-d\TH:i') }}" required>
+                                @endforeach
                             </div>
-    
+
                             <!-- Dropdown Menu for Shift Selection -->
                             <div class="ml-auto">
                                 <form class="form-inline">
@@ -30,7 +31,6 @@
                                 </form>
                                 </div>
                             </div>
-                            @endforeach
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">

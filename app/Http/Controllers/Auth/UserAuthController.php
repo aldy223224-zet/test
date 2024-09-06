@@ -1,63 +1,47 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-//use App\Models\Meta;
-use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-
+use App\Http\Controllers\Controller;
 
 class UserAuthController extends Controller
 {
-    // private function meta(){
-    //     $meta = Meta::$data_meta;
-    //     $meta['title'] = 'Login User';
-    //     return $meta;
-    // }
-
-
     public function index(){
-        return view('dashboard.login',[
-            //"meta" => $this->meta(),
-        ]);
+        return view('dashboard.login');
     }
 
-    public function login(Request $request){
+    public function login(Request $request) {
+        // Validasi input
         $credentials = $request->validate([
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
+    
+        // Periksa apakah "remember me" dicentang
         $remember = $request->has('remember');
 
-        if(Auth::guard('user')->attempt($credentials)){
-            //$status = Auth::guard('user')->user()->status;
-            //if($status=="nonactive"){
-                //return back()->with('error','Akun anda dinonaktifkan!');
-            //}
+        // Coba login dengan kredensial dan opsi remember
+        if (Auth::guard('user')->attempt($credentials, $remember)) {
+            // Regenerasi session untuk mencegah session fixation attacks
             $request->session()->regenerate();
             return redirect()->intended('/dashboard/');
         }
-        if (Auth::attempt($credentials, $remember)) {
-            // Authentication passed...
-            return redirect()->intended('dashboard');
-        }
     
+        // Jika login gagal, kembali dengan error
         return redirect()->back()->withErrors([
             'username' => 'The provided credentials do not match our records.',
-        ]);
-
-        // return view('admin.login',[
-        //     "meta" => $this->meta(),
-        // ]);
-
-        return back()->with('error','Login failed!');
+        ])->onlyInput('username'); // Tetap tampilkan input yang sudah dimasukkan
     }
-
-    public function logout(){
-        if(Auth::guard('user')->check()){
-            Auth::guard('user')->logout();
-        }
+    
+    public function logout() {
+        // Logout user
+        Auth::guard('user')->logout();
+        // Hapus session
+        request()->session()->invalidate();
+        // Regenerasi session ID
+        request()->session()->regenerateToken();
         return redirect('/login');
     }
 }
