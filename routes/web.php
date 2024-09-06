@@ -7,6 +7,7 @@ use App\Http\Controllers\APIController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\AdminHome;
 use App\Http\Controllers\Admin\AdminProduction;
+use App\Http\Controllers\Admin\AdminReport;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Dashboard\DashboardHome;
@@ -44,6 +45,7 @@ Route::group(['prefix'=> 'admin','middleware'=>['auth:admin']], function(){
     Route::get('/', [AdminHome::class, 'index']);
     Route::get('/home', [AdminHome::class, 'index']);
     Route::get('/hasil-admin', [AdminProduction::class, 'index'])->name('admin.production.index');
+    Route::get('/print-laporan', [AdminReport::class, 'print']);
     
     Route::post('/hasil-admin', [AdminProduction::class, 'postHandler']);
     //Route::put('/admin/production/verify/{id}', [AdminProduction::class, 'verify'])->name('production.verify');

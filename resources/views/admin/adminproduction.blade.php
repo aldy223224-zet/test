@@ -34,7 +34,8 @@
       <div class="row m-0">
         <h6 class="m-0 font-weight-bold text-primary my-auto">Tabel Produksi</h6>
         <button class="btn btn-success px-2 ml-auto" onclick="dataexport('excel')">Excel</button>
-        <button class="btn btn-danger px-2 ml-2" onclick="dataexport('pdf')">PDF</button>
+        <a class="btn btn-danger px-2 ml-2" href="/admin/print-laporan">PDF</a>
+        {{-- <button class="btn btn-danger px-2 ml-2" onclick="dataexport('pdf')">PDF</button> --}}
       </div>
     </div>
     <div class="card-body">
