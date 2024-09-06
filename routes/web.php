@@ -31,8 +31,8 @@ Route::group(['prefix'=> 'dashboard','middleware'=>['auth:user']], function(){
     Route::get('/home', [DashboardHome::class, 'index']);
     Route::get('/hasil-produksi', [DashboardProduction::class, 'index']);
     
-    Route::post('/hasil-produksi', [DashboardProduction::class, 'postHandler'])->name('production.store');
-    Route::put('/production/update/{id}', [DashboardProduction::class, 'update'])->name('production.update');
+    Route::post('/hasil-produksi', [DashboardProduction::class, 'postHandler']);
+    //Route::put('/production/update/{id}', [DashboardProduction::class, 'update'])->name('production.update');
 
 });
 
