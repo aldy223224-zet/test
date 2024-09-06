@@ -8,6 +8,29 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Halo {{$profil->name}}, {{ $profil->position }}!</h1>
     </div>
+    @foreach($productions as $production)
+                        <!-- Admin Date Menu -->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="production_date{{ $production->id }}">Tanggal Produksi</label>
+                                <input type="datetime-local" class="form-control" id="production_date{{ $production->id }}" name="production_date" value="{{ \Carbon\Carbon::parse($production->production_date)->format('Y-m-d\TH:i') }}" required>
+                            </div>
+    
+                            <!-- Dropdown Menu for Shift Selection -->
+                            <div class="ml-auto">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                    <label for="shiftSelect" class="sr-only">Pilih Shift:</label>
+                                    <select id="shiftSelect" name="shift" class="form-control form-control-sm">
+                                        <option value="1">Shift 1</option>
+                                        <option value="2">Shift 2</option>
+                                        <option value="3">Shift 3</option>
+                                    </select>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                            @endforeach
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -65,12 +88,11 @@
                     @method('PUT')
                     <input type="hidden" name="submit" value="verify">
                     <select name="status" required>
-                        <option value="1">Verified</option>
-                        <option value="0">Waiting</option>
-                        <option value="2">Denied</option>
+                        <option value="1">Terverifikasi</option>
+                        <option value="0">Menunggu verifikasi</option>
+                        <option value="2">Ditolak</option>
                     </select>
-                    <input type="text" name="note" placeholder="Add a note (optional)">
-                    <button class="btn btn-primary btn-sm ml-auto" type="submit">Verify</button>
+                    <button class="btn btn-primary btn-sm ml-auto" type="submit">Verifikasi</button>
                 </form>
             </td>
         </tr>
@@ -81,6 +103,7 @@
         </div>
     </div>
 
+    <!-- Admin Note Menu -->
     <div class="row">
         <div class="col-lg-12">
             <div class="p-4">
@@ -91,12 +114,8 @@
                     <div class="form-group">
                         <input type="text" name="note" class="form-control form-control-user" placeholder="Catatan.....">
                     </div>
-    
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="production_date{{ $production->id }}">Tanggal Produksi</label>
-                            <input type="datetime-local" class="form-control" id="production_date{{ $production->id }}" name="production_date" value="{{ \Carbon\Carbon::parse($production->production_date)->format('Y-m-d\TH:i') }}" required>
                         </div>
+                        
                         <button type="submit" name="submit" class="btn btn-primary btn-user btn-block" style="width: 150px; padding: 10px; margin: 0 auto; display: block;">Submit</button>
 
     <!-- Instructions Card -->

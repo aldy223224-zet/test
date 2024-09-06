@@ -9,13 +9,11 @@
         <h1 class="h3 mb-0 text-gray-800">Halo, {{$profil->name}}!</h1>
     </div>
 
-    <h1 class="h3 mb-2 text-gray-800">Tabel Produksi {{ $profil->position }}</h1>
-
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="row m-0">
-                <h6 class="m-0 font-weight-bold text-primary">Tabel Produksi</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Tabel Produksi {{ $profil->position }}</h6>
                 <button class="btn btn-primary btn-sm ml-auto" data-toggle="modal" data-target="#tambahModal">Tambah</button>
             </div>
         </div>
@@ -73,46 +71,54 @@
                                 </td>
                             </tr>
 
-                            <!-- Edit Modal -->
-                            <div class="modal fade" id="editModal{{ $p->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $p->id }}" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="editModalLabel{{ $p->id }}">Edit Hasil Produksi</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <form method="POST" action="{{ route('production.update', $p->id) }}">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="production_date{{ $p->id }}">Tanggal Produksi</label>
-                                                    <input type="datetime-local" class="form-control" id="production_date{{ $p->id }}" name="production_date" value="{{ \Carbon\Carbon::parse($p->production_date)->format('Y-m-d\TH:i') }}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="shift{{ $p->id }}">Pilih Shift</label>
-                                                    <select class="form-control" id="shift{{ $p->id }}" name="shift" required>
-                                                        <option value="1" {{ $p->shift == 1 ? 'selected' : '' }}>1</option>
-                                                        <option value="2" {{ $p->shift == 2 ? 'selected' : '' }}>2</option>
-                                                        <option value="3" {{ $p->shift == 3 ? 'selected' : '' }}>3</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="production_result{{ $p->id }}">Hasil Produksi</label>
-                                                    <input type="number" class="form-control" id="production_result{{ $p->id }}" name="production_result" value="{{ $p->production_result }}" required>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                                            </div>
-                                        </form>
+                        <!-- Edit Modal -->
+                        <div class="modal fade" id="editModal{{ $p->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $p->id }}" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel{{ $p->id }}">Edit Hasil Produksi</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
+                                    <form method="POST" action="{{ route('production.update', $p->id) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="production_date{{ $p->id }}">Tanggal Produksi</label>
+                                                <input type="datetime-local" class="form-control" id="production_date{{ $p->id }}" name="production_date" value="{{ \Carbon\Carbon::parse($p->production_date)->format('Y-m-d\TH:i') }}" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="shift{{ $p->id }}">Pilih Shift</label>
+                                                <select class="form-control" id="shift{{ $p->id }}" name="shift" required>
+                                                    <option value="1" {{ $p->shift == 1 ? 'selected' : '' }}>1</option>
+                                                    <option value="2" {{ $p->shift == 2 ? 'selected' : '' }}>2</option>
+                                                    <option value="3" {{ $p->shift == 3 ? 'selected' : '' }}>3</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="production_result{{ $p->id }}">Hasil Produksi</label>
+                                                <input type="number" class="form-control" id="production_result{{ $p->id }}" name="production_result" value="{{ $p->production_result }}" required>
+                                            </div>
+                                            
+                                            <!-- Note Section (only if denied) -->
+                                            @if ($p->status == 2)
+                                                <div class="form-group">
+                                                    <label for="note{{ $p->id }}">Catatan Penolakan</label>
+                                                    <textarea class="form-control" id="note{{ $p->id }}" name="note" rows="3" readonly>{{ $p->note }}</textarea>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <!-- End of Edit Modal -->
+                        </div>
+                        <!-- End of Edit Modal -->
 
                         @endforeach
                     </tbody>
