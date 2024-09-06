@@ -13,6 +13,13 @@
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="/css/sb-admin-2.min.css">
     <link rel="stylesheet" href="/vendor/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="/vendor/datatables.net-bs4/dataTables.bootstrap4.css">
 
     <!-- JS -->
     <script src="/vendor/sweetalert2/sweetalert2.all.min.js"></script>
+
+    <style>
+        .dt-buttons{display: none}
+        .dataTables_length{display: contents;}
+        #myTable2_filter{float:right}
+    </style>
