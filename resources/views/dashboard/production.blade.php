@@ -52,6 +52,9 @@
                     <span class="badge badge-warning">Menunggu verifikasi</span>
                   @else
                     <span class="badge badge-danger">Ditolak</span>
+                    <div class="alert alert-danger p-1 mt-1" role="alert" style="font-size: 12px">
+                      <b>Catatan : </b><br>{{ $p->note }}
+                    </div>
                   @endif
                 </td>
                 <td>
