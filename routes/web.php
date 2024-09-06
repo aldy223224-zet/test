@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\APIController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\AdminHome;
 use App\Http\Controllers\Admin\DashboardAdmin;
@@ -77,4 +78,10 @@ Route::middleware(['auth'])->group(function () {
 
         return redirect('/'); // Redirect to home or another default route
     });
+});
+
+// API
+Route::group(['prefix'=> 'api'], function(){
+    Route::get('production/{production:id}', [APIController::class, 'Production']);
+    Route::get('user/{user:id}', [APIController::class, 'User']);
 });
