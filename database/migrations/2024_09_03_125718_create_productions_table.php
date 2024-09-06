@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('position');
+            $table->string('group');
             $table->string('production_date');
             $table->integer('production_result');
             $table->string('shift');

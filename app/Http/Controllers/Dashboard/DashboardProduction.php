@@ -55,8 +55,9 @@ class DashboardProduction extends Controller
             'production_result' => 'required|numeric',
             'shift' => 'required|numeric',
         ]);
-
         $validatedData['user_id'] = Auth::id(); // Use Auth::id() to get the authenticated user's ID
+        $validatedData['group'] = auth()->user()->group;
+        $validatedData['position'] = auth()->user()->position;
         $validatedData['status'] = 0;
         $validatedData['note'] = "";
 

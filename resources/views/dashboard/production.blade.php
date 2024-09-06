@@ -40,8 +40,8 @@
               @endphp
               <tr>
                 <td>{{ $profil->name }}</td>
-                <td>{{ $profil->position }}</td>
-                <td>{{ $profil->group }}</td>
+                <td>{{ $p->position }}</td>
+                <td>{{ $p->group }}</td>
                 <td>{{ $p->shift }}</td>
                 <td>{{ date_format($pdate,"Y/m/d") }}</td>
                 <td>{{ $p->production_result }}</td>
