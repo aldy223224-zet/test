@@ -70,6 +70,7 @@
   </div>
 
   @include('partials.dashboard-script')
+  @yield('script')
 
 </body>
 

@@ -17,6 +17,7 @@ class AdminHome extends Controller
     public function index(){
         return view('admin.home',[
             //"meta" => $this->meta(),
+            "title" => "Admin - Home",
             "profil" => Auth::guard('admin')->user(),
         ]);
     }

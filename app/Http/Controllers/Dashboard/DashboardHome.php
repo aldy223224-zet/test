@@ -16,7 +16,7 @@ class DashboardHome extends Controller
 
     public function index(){
         return view('dashboard.home',[
-            //"meta" => $this->meta(),
+            "title" => "Dashboard - Home",
             "profil" => Auth::guard('user')->user(),
         ]);
     }
