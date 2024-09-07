@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('position');
             $table->string('group');
             $table->string('role');
+            $table->string('KASHIF')->nullable();
+            $table->string('SPV')->nullable();
             $table->rememberToken(); 
             $table->timestamps();
         });

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('shift');
             $table->string('status');
             $table->string('note');
+            $table->string('noteuser');
             $table->timestamps();
         });
     }

@@ -28,6 +28,7 @@
                 <th>Shift</th>
                 <th>Tanggal</th>
                 <th>Hasil</th>
+                <th>Catatan</th>
                 <th>Status</th>
                 <th>Aksi</th>
                 <!-- Added action column -->
@@ -45,6 +46,7 @@
                 <td>{{ $p->shift }}</td>
                 <td>{{ date_format($pdate,"Y/m/d") }}</td>
                 <td>{{ $p->production_result }}</td>
+                <td>{{ $p->noteuser }}</td>
                 <td style="text-align: center; vertical-align: middle;">
                   @if ($p->status == 1)
                     <span class="badge badge-success">Terverifikasi</span>
@@ -109,6 +111,10 @@
               <div class="form-group">
                 <label for="production_result">Hasil Produksi</label>
                 <input type="number" class="form-control" id="production_result" name="production_result" required>
+              </div>
+              <div class="form-group">
+                <label for="note">Catatan</label>
+                <input type="text" class="form-control" id="ent" name="noteuser">
               </div>
             </div>
             <div class="modal-footer">
@@ -202,6 +208,7 @@
           $("#epd").val(mydata.production_date);
           $("#epr").val(mydata.production_result);
           $("#esh").val(mydata.shift);
+          $("#ent").val(mydata.noteuser);
           //$("#et").text("Edit Logbook "+mydata.name);
         }
       });

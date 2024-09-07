@@ -60,6 +60,7 @@ class DashboardProduction extends Controller
         $validatedData['position'] = auth()->user()->position;
         $validatedData['status'] = 0;
         $validatedData['note'] = "";
+        $validatedData['noteuser'] = $request->noteuser ?? '';
 
         // Create new production
         Production::create($validatedData);

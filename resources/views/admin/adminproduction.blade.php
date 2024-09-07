@@ -43,12 +43,15 @@
         <table class="table table-bordered" id="myTable2" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>Nama</th>
-              <th>Posisi</th>
-              <th>Grup</th>
-              <th>Tanggal Input</th>
-              <th>Hasil Produksi</th>
+              <th>Tanggal Produksi</th>
               <th>Shift</th>
+              <th>Grup</th>
+              <th>SPV</th>
+              <th>KASHIF</th>
+              <th>Posisi</th>
+              <th>Nama</th>
+              <th>Hasil Produksi</th>
+              <th>Catatan operator</th>
               <th>Status Verifikasi</th>
               <th>Aksi</th>
             </tr>
@@ -59,12 +62,15 @@
              $pdate = date_create($production->production_date);   
             @endphp
             <tr>
-              <td>{{ $production->user->name }}</td>
-              <td>{{ $production->position }}</td>
-              <td>{{ $production->group }}</td>
               <td>{{ date_format($pdate,"Y/m/d") }}</td>
-              <td>{{ $production->production_result }}</td>
               <td>{{ $production->shift }}</td>
+              <td>{{ $production->group }}</td>
+              <td>{{ $production->user->KASHIF }}</td>
+              <td>{{ $production->user->SPV }}</td>
+              <td>{{ $production->position }}</td>
+              <td>{{ $production->user->name }}</td>
+              <td>{{ $production->production_result }}</td>
+              <td>{{ $production->noteuser }}</td>
               <td>
                 @if ($production->status == 1)
                 <span class="badge badge-success">Terverifikasi</span>

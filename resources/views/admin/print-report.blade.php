@@ -17,12 +17,16 @@
           <table class="table table-bordered mt-4">
             <thead class="table-dark">
               <tr>
-                <th>Nama</th>
-                <th>Posisi</th>
-                <th>Group</th>
+                <th>Tanggal Produksi</th>
                 <th>Shift</th>
-                <th>Tanggal</th>
-                <th>Hasil</th>
+                <th>Grup</th>
+                <th>SPV</th>
+                <th>KASHIF</th>
+                <th>Posisi</th>
+                <th>Nama</th>
+                <th>Hasil Produksi</th>
+                <th>Catatan operator</th>
+                <th>Status Verifikasi</th>
               </tr>
             </thead>
             <tbody>
@@ -31,14 +35,27 @@
               $pdate = date_create($p->production_date);
               @endphp
               <tr>
-                <td>{{ $profil->name }}</td>
-                <td>{{ $p->position }}</td>
-                <td>{{ $p->group }}</td>
-                <td>{{ $p->shift }}</td>
                 <td>{{ date_format($pdate,"Y/m/d") }}</td>
+                <td>{{ $p->shift }}</td>
+                <td>{{ $p->group }}</td>
+                <td>{{ $profil->SPV }}</td>
+                <td>{{ $profil->KASHIF }}</td>
+                <td>{{ $p->position }}</td>
+                <td>{{ $profil->name }}</td>
                 <td>{{ $p->production_result }}</td>
+                <td>{{ $p->usernote }}</td>
+                <td style="text-align: center; vertical-align: middle;">
+                      @if ($p->status == 1)
+                        <span>Terverifikasi</span>
+                      @elseif ($p->status == 0)
+                        <span>Menunggu verifikasi</span>
+                      @else
+                        <span>Ditolak</span>
+                        <div class="alert alert-danger p-1 mt-1" role="alert" style="font-size: 12px">
+                        </div>
+                      @endif
               </tr>
-              @endforeach
+                      @endforeach
             </tbody>
           </table>
           <button class="btn btn-primary no-print" onclick="window.print()">Print</button>

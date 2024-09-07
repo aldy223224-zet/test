@@ -27,17 +27,39 @@ require '2024_09_03_125718_create_productions_table.php'
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Tanggal Produksi</th>
+                            <th>Shift</th>
+                            <th>Grup</th>
+                            <th>SPV</th>
+                            <th>KASHIF</th>
+                            <th>Posisi</th>
                             <th>Nama</th>
-            <th>Posisi</th>
-            <th>Grup</th>
-            <th>Tanggal Input</th>
-            <th>Hasil Produksi</th>
-            <th>Shift</th>
-        </tr>
-    </thead>
+                            <th>Hasil Produksi</th>
+                            <th>Catatan operator</th>
+                            <th>Status Verifikasi</th>
+                        </tr>
+                    </thead>
     <tbody>
         @foreach($productions as $production)
         <tr>
+            <td>{{ \Carbon\Carbon::parse($production->production_date)->format('d/m/Y') }}</td>
+            <td>{{ $production->shift }}</td>
+            <td>{{ $production->user->group }}</td>
+            <td>{{ $production->user->SPV}}</td>
+            <td>{{ $production->user->KASHIF }}</td>
+            <td>{{ $production->user->position }}</td>
+            <td>{{ $production->user->name }}</td>
+            <td>{{ $production->production_result }}</td>
+            <td>{{ $production->usernote }}</td>
+            <td style="text-align: center; vertical-align: middle;">
+                  @if ($p->status == 1)
+                    <span>Terverifikasi</span>
+                  @elseif ($p->status == 0)
+                    <span>Menunggu verifikasi</span>
+                  @else
+                    <span>Ditolak</span>
+                    <div class="alert alert-danger p-1 mt-1" role="alert" style="font-size: 12px">
+                    </div>
             <td>{{ $production->user->name }}</td>
             <td>{{ $production->user->position }}</td>
             <td>{{ $production->user->group }}</td>
