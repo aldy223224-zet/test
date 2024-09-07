@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('status');
             $table->string('note');
             $table->string('noteuser');
+            $table->string('notedaily');
+            $table->string('shiftadmin');
+            $table->string('admindate');
             $table->timestamps();
         });
     }
