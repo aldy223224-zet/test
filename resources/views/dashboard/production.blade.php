@@ -155,6 +155,10 @@
                 <label for="epr">Hasil Produksi</label>
                 <input type="number" class="form-control" id="epr" name="production_result" required>
               </div>
+              <div class="form-group">
+                <label for="note">Catatan</label>
+                <input type="text" class="form-control" id="ent" name="noteuser">
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

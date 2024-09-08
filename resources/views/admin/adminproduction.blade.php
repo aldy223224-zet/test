@@ -8,6 +8,7 @@
     <h1 class="h3 mb-0 text-gray-800">Halo {{$profil->name}}, {{ $profil->position }}!</h1>
   </div>
 
+
   <div class="d-none">
     <table>
       <tr>
@@ -94,18 +95,46 @@
     </div>
   </div>
   <!-- Admin Note Menu -->
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="p-4">
-        <div class="text-center">
-          <h1 class="h4 text-gray-900 mb-4">Berikan Catatan Hari Ini!</h1>
+  <button class="btn btn-primary btn-sm ml-auto" data-toggle="modal" data-target="#tambah">Catatan</button>
+
+  <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Berikan Catatan Produksi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <form class="user" method="post">
-        <div class="form-group">
-          <input type="text" name="note" class="form-control form-control-user" placeholder="Catatan.....">
-        </div>
+        <form method="POST">
+          @csrf
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="production_date">Tanggal Produksi</label>
+              <input type="datetime-local" class="form-control" id="admindate" name="admindate" required>
+            </div>
+            <div class="form-group">
+              <label for="shift">Pilih Shift</label>
+              <select class="form-control" id="shiftadmin" name="shiftadmin" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="note">Catatan</label>
+              <input type="text" class="form-control" id="ent" name="notedaily">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+            <button type="submit" name="submit" value="store" class="btn btn-primary">Tambah</button>
+          </div>
+        </form>
       </div>
-      <button type="submit" name="submit" class="btn btn-primary btn-user btn-block" style="width: 150px; padding: 10px; margin: 0 auto; display: block;">Submit</button>
+    </div>
+  </div>
+
       <!-- Instructions Card -->
       <div class="card shadow mb-4 mt-4">
         <div class="card-header py-3">
