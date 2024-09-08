@@ -2,13 +2,47 @@
 
 @section('content')
 <!-- Begin Page Content -->
+
 <div class="container-fluid">
+  
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Halo {{$profil->name}}, {{ $profil->position }}!</h1>
   </div>
 
-
+  <div class="card shadow mb-4 mt-4 d-none">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Catatan produksi</h6>
+    </div>
+    <div class="card-body">
+      <form method="post">
+        @csrf
+        <div class="row">
+          <div class="col-2">
+            <label for="">Tanggal</label>
+            <input type="date" class="form-control" name="c_date" required>
+          </div>
+          <div class="col-2">
+            <label for="">Shift admin</label>
+            <select class="form-control" id="shift" name="c_shift" required>
+              <option value="1">1 (00.00-08.00)</option>
+              <option value="2">2 (08.00-16.00)</option>
+              <option value="3">3 (16.00-24.00)</option>
+            </select>
+          </div>
+          <div class="col-4">
+            <label for="">Catatan</label>
+            <input type="text" class="form-control" name="c_note" required>
+          </div>
+          <div class="col-2">
+            <label for="" class="text-white">.</label><br>
+            <button type="submit" class="btn btn-primary" name="submit" value="submit_note">Simpan</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
   <div class="d-none">
     <table>
       <tr>
@@ -44,26 +78,30 @@
         <table class="table table-bordered" id="myTable2" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>Tanggal Produksi</th>
+              <th style="min-width: 140px;">Tanggal Produksi</th>
               <th>Shift</th>
               <th>Grup</th>
               <th>SPV</th>
               <th>KASHIF</th>
               <th>Posisi</th>
               <th>Nama</th>
-              <th>Hasil Produksi</th>
-              <th>Catatan operator</th>
-              <th>Status Verifikasi</th>
+              <th style="min-width: 110px;">Hasil Produksi</th>
+              <th style="min-width: 130px;">Catatan operator</th>
+              <th style="min-width: 140px;">Status Verifikasi</th>
               <th>Aksi</th>
+              <th>Tanggal</th>
+              <th>Shift</th>
+              <th>Catatan</th>
             </tr>
           </thead>
           <tbody>
             @foreach($productions as $production)
             @php
-             $pdate = date_create($production->production_date);   
+              $pdate = date_create($production->production_date);   
+              $sdate = date_create($production->shift_date);   
             @endphp
             <tr>
-              <td>{{ date_format($pdate,"Y/m/d") }}</td>
+              <td>{{ date_format($pdate,"Y/m/d H:i:s") }}</td>
               <td>{{ $production->shift }}</td>
               <td>{{ $production->group }}</td>
               <td>{{ $production->user->KASHIF }}</td>
@@ -71,7 +109,7 @@
               <td>{{ $production->position }}</td>
               <td>{{ $production->user->name }}</td>
               <td>{{ $production->production_result }}</td>
-              <td>{{ $production->noteuser }}</td>
+              <td>{{ $production->user_note }}</td>
               <td>
                 @if ($production->status == 1)
                 <span class="badge badge-success">Terverifikasi</span>
@@ -87,6 +125,9 @@
               <td>
                 <button type="button" class="btn btn-primary btn-sm ml-auto" onclick="edit({{ $production->id }})" data-toggle="modal" data-target="#edit">Edit</button>
               </td>
+              <td>{{ date_format($sdate,"Y/m/d H:i:s") }}</td>
+              <td>{{$production->shift_admin}}</td>
+              <td>{{$production->shift_note}}</td>
             </tr>
             @endforeach
           </tbody>
@@ -94,59 +135,19 @@
       </div>
     </div>
   </div>
-  <!-- Admin Note Menu -->
-  <button class="btn btn-primary btn-sm ml-auto" data-toggle="modal" data-target="#tambah">Catatan</button>
 
-  <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Berikan Catatan Produksi</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form method="POST">
-          @csrf
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="production_date">Tanggal Produksi</label>
-              <input type="datetime-local" class="form-control" id="admindate" name="admindate" required>
-            </div>
-            <div class="form-group">
-              <label for="shift">Pilih Shift</label>
-              <select class="form-control" id="shiftadmin" name="shiftadmin" required>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="note">Catatan</label>
-              <input type="text" class="form-control" id="ent" name="notedaily">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-            <button type="submit" name="submit" value="store" class="btn btn-primary">Tambah</button>
-          </div>
-        </form>
-      </div>
+  <!-- Instructions Card -->
+  <div class="card shadow mb-4 mt-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Petunjuk Penggunaan</h6>
+    </div>
+    <div class="card-body">
+      <p>Pastikan semua data yang telah diinput oleh operator telah diverifikasi dengan teliti sebelum mengakhiri shift. Verifikasi ini penting untuk memastikan bahwa semua informasi yang dimasukkan akurat dan lengkap, sehingga mendukung kelancaran operasi dan menghindari potensi kesalahan.</p>
+      <p class="mb-0">Ensure that all data that has been inputted by the operator has been carefully verified before ending the shift. This verification is important to ensure that all information entered is accurate and complete, thus supporting smooth operations and avoiding potential errors.</p>
     </div>
   </div>
+  
 
-      <!-- Instructions Card -->
-      <div class="card shadow mb-4 mt-4">
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Petunjuk Penggunaan</h6>
-        </div>
-        <div class="card-body">
-          <p>Pastikan semua data yang telah diinput oleh operator telah diverifikasi dengan teliti sebelum mengakhiri shift. Verifikasi ini penting untuk memastikan bahwa semua informasi yang dimasukkan akurat dan lengkap, sehingga mendukung kelancaran operasi dan menghindari potensi kesalahan.</p>
-          <p class="mb-0">Ensure that all data that has been inputted by the operator has been carefully verified before ending the shift. This verification is important to ensure that all information entered is accurate and complete, thus supporting smooth operations and avoiding potential errors.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
@@ -173,6 +174,26 @@
           <div class="form-group">
             <label for="note">Catatan</label>
             <input type="text" class="form-control" id="ent" name="note">
+          </div>
+          <hr>
+          <p class="text-primary font-weight-bold">Catatan shift :</p>
+          <div class="form-group row">
+            <div class="col-4">
+              <label for="">Tanggal</label>
+              <input type="datetime-local" id="esd" class="form-control" name="shift_date" required>
+            </div>
+            <div class="col-4">
+              <label for="">Shift admin</label>
+              <select class="form-control" id="esa" name="shift_admin" required>
+                <option value="1">1 (00.00-08.00)</option>
+                <option value="2">2 (08.00-16.00)</option>
+                <option value="3">3 (16.00-24.00)</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="">Catatan</label>
+              <input type="text" class="form-control" id="esn" name="shift_note">
+            </div>
           </div>
         </div>
         <div class="modal-footer">
@@ -213,6 +234,9 @@
           $("#eid").val(id);
           $("#est").val(mydata.status);
           $("#ent").val(mydata.note);
+          $("#esd").val(mydata.shift_date);
+          $("#esa").val(mydata.shift_admin);
+          $("#esn").val(mydata.shift_note);
           //$("#et").text("Edit Logbook "+mydata.name);
         }
       });

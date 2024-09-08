@@ -46,7 +46,7 @@
                 <td>{{ $p->shift }}</td>
                 <td>{{ date_format($pdate,"Y/m/d") }}</td>
                 <td>{{ $p->production_result }}</td>
-                <td>{{ $p->noteuser }}</td>
+                <td>{{ $p->user_note }}</td>
                 <td style="text-align: center; vertical-align: middle;">
                   @if ($p->status == 1)
                     <span class="badge badge-success">Terverifikasi</span>
@@ -103,9 +103,9 @@
               <div class="form-group">
                 <label for="shift">Pilih Shift</label>
                 <select class="form-control" id="shift" name="shift" required>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
+                  <option value="1">1 (00.00-08.00)</option>
+                  <option value="2">2 (08.00-16.00)</option>
+                  <option value="3">3 (16.00-24.00)</option>
                 </select>
               </div>
               <div class="form-group">
@@ -114,7 +114,7 @@
               </div>
               <div class="form-group">
                 <label for="note">Catatan</label>
-                <input type="text" class="form-control" id="ent" name="noteuser">
+                <input type="text" class="form-control" name="user_note">
               </div>
             </div>
             <div class="modal-footer">
@@ -157,7 +157,7 @@
               </div>
               <div class="form-group">
                 <label for="note">Catatan</label>
-                <input type="text" class="form-control" id="ent" name="noteuser">
+                <input type="text" class="form-control" id="eun" name="user_note">
               </div>
             </div>
             <div class="modal-footer">
@@ -212,7 +212,7 @@
           $("#epd").val(mydata.production_date);
           $("#epr").val(mydata.production_result);
           $("#esh").val(mydata.shift);
-          $("#ent").val(mydata.noteuser);
+          $("#eun").val(mydata.user_note);
           //$("#et").text("Edit Logbook "+mydata.name);
         }
       });

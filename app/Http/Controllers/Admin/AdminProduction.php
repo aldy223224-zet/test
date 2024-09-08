@@ -11,15 +11,14 @@ use Illuminate\Support\Facades\Auth;
 class AdminProduction extends Controller
 {
     public function index() {
-        // Fetch all production data with related user details
-        $productions = Production::with('user')->get();
 
         return view('admin.adminproduction', [
             "title" => "Hasil Produksi",
-            "productions" => $productions,  // Passing all production data to the view
+            "productions" => Production::with('user')->get(),  // Passing all production data to the view
             "profil" => Auth::user(),
         ]);
     }
+
 
     public function postHandler(Request $request) {
         if ($request->submit == "verify") {
@@ -43,8 +42,11 @@ class AdminProduction extends Controller
         $validatedData = $request->validate([
             'id' => 'required|numeric',
             'status' => 'required|numeric',
+            'shift_admin' => 'required|numeric',
+            'shift_date' => 'required',
         ]);
         $validatedData['note'] = $request->note ?? '';
+        $validatedData['shift_note'] = $request->shift_note ?? '';
         
         $production = Production::find($request->id);
 

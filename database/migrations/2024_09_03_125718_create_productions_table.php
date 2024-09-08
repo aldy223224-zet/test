@@ -22,10 +22,10 @@ return new class extends Migration
             $table->string('shift');
             $table->string('status');
             $table->string('note');
-            $table->string('noteuser');
-            $table->string('notedaily');
-            $table->string('shiftadmin');
-            $table->string('admindate');
+            $table->string('user_note');
+            $table->string('shift_note');
+            $table->string('shift_admin');
+            $table->string('shift_date');
             $table->timestamps();
         });
     }

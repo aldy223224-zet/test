@@ -60,7 +60,7 @@ class DashboardProduction extends Controller
         $validatedData['position'] = auth()->user()->position;
         $validatedData['status'] = 0;
         $validatedData['note'] = "";
-        $validatedData['noteuser'] = $request->noteuser ?? '';
+        $validatedData['user_note'] = $request->user_note ?? '';
 
         // Create new production
         Production::create($validatedData);
@@ -75,6 +75,7 @@ class DashboardProduction extends Controller
             'shift' => 'required|numeric',
         ]);
         $validatedData['status'] = 0;
+        $validatedData['user_note'] = $request->user_note ?? '';
 
         $production = Production::find($request->id);
         
