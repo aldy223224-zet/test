@@ -38,12 +38,12 @@
                 <td>{{ date_format($pdate,"Y/m/d") }}</td>
                 <td>{{ $p->shift }}</td>
                 <td>{{ $p->group }}</td>
-                <td>{{ $profil->SPV }}</td>
-                <td>{{ $profil->KASHIF }}</td>
+                <td>{{ $p->user->SPV }}</td>
+                <td>{{ $p->user->KASHIF }}</td>
                 <td>{{ $p->position }}</td>
-                <td>{{ $profil->name }}</td>
+                <td>{{ $p->user->name }}</td>
                 <td>{{ $p->production_result }}</td>
-                <td>{{ $p->usernote }}</td>
+                <td>{{ $p->noteuser }}</td>
                 <td style="text-align: center; vertical-align: middle;">
                       @if ($p->status == 1)
                         <span>Terverifikasi</span>
