@@ -9,13 +9,12 @@
 
   <a class="sidebar-brand d-flex align-items-center justify-content-center">
     <div class="sidebar-brand-icon">
-        <img id="logo" src="/img/img1.png" width="150">
+        <img id="logo" src="img/" width="150">
     </div>
 </a>
 
 
-
-  <!-- Topbar Navbar -->
+<!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">
 
     <!-- Nav Item - Time, Date, and Day Information -->
@@ -59,7 +58,7 @@
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{$profil->name}}</span>
               <img class="img-profile rounded-circle"
-                  src="/img/undraw_profile.svg">
+                  src="img/undraw_profile.svg">
           </a>
           <!-- Dropdown - User Information -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -70,7 +69,7 @@
               </a>
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/logout">
+              <a class="dropdown-item" href="/dashboard/logout">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Keluar
               </a>

@@ -13,7 +13,7 @@
     <li class="nav-item active">
       <a class="nav-link" href="/admin">
           <i class="fas fa-fw fa-tachometer-alt"style="color: black;"></i>
-          <span style="color: black;">Download</span></a>
+          <span style="color: black;">Dashboard</span></a>
     </li>
 
   <!-- Sidebar Toggler (Sidebar) -->

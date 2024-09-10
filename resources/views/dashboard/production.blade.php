@@ -47,6 +47,8 @@
                 <td>{{ date_format($pdate,"Y/m/d") }}</td>
                 <td>{{ $p->production_result }}</td>
                 <td>{{ $p->user_note }}</td>
+                {{ $p->group }}
+                {{ $p->shift }}
                 <td style="text-align: center; vertical-align: middle;">
                   @if ($p->status == 1)
                     <span class="badge badge-success">Terverifikasi</span>

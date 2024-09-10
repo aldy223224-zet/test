@@ -81,7 +81,7 @@
               <th style="min-width: 140px;">Tanggal Produksi</th>
               <th>Shift</th>
               <th>Grup</th>
-              <th>SPV</th>
+              <th>  SPV  </th>
               <th>KASHIF</th>
               <th>Posisi</th>
               <th>Nama</th>
@@ -91,7 +91,7 @@
               <th>Aksi</th>
               <th>Tanggal</th>
               <th>Shift</th>
-              <th>Catatan</th>
+              <th>  Catatan  </th>
             </tr>
           </thead>
           <tbody>
@@ -101,11 +101,11 @@
               $sdate = date_create($production->shift_date);   
             @endphp
             <tr>
-              <td>{{ date_format($pdate,"Y/m/d H:i:s") }}</td>
+              <td>{{ date_format($pdate,"d/m/Y") }}</td>
               <td>{{ $production->shift }}</td>
               <td>{{ $production->group }}</td>
-              <td>{{ $production->user->KASHIF }}</td>
-              <td>{{ $production->user->SPV }}</td>
+              <td>{{ $production->SPV }}</td>
+              <td>{{ $production->KASHIF}}</td>
               <td>{{ $production->position }}</td>
               <td>{{ $production->user->name }}</td>
               <td>{{ $production->production_result }}</td>
@@ -125,7 +125,7 @@
               <td>
                 <button type="button" class="btn btn-primary btn-sm ml-auto" onclick="edit({{ $production->id }})" data-toggle="modal" data-target="#edit">Edit</button>
               </td>
-              <td>{{ date_format($sdate,"Y/m/d H:i:s") }}</td>
+              <td>{{ date_format($sdate,"d/m/Y") }}</td>
               <td>{{$production->shift_admin}}</td>
               <td>{{$production->shift_note}}</td>
             </tr>

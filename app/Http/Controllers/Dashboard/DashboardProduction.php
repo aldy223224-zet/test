@@ -58,6 +58,8 @@ class DashboardProduction extends Controller
         $validatedData['user_id'] = Auth::id(); // Use Auth::id() to get the authenticated user's ID
         $validatedData['group'] = auth()->user()->group;
         $validatedData['position'] = auth()->user()->position;
+        $validatedData['KASHIF'] = auth()->user()->KASHIF;
+        $validatedData['SPV'] = auth()->user()->SPV;
         $validatedData['status'] = 0;
         $validatedData['note'] = "";
         $validatedData['user_note'] = $request->user_note ?? '';
